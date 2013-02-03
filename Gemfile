@@ -1,25 +1,28 @@
 source 'http://rubygems.org'
-
-gem 'rails', '~> 3.1.0'
+ruby '1.9.3'
+gem 'rails', '3.2.11'
 
 group :assets do
-  gem 'coffee-rails', "~> 3.1.0"
-  gem 'uglifier'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'uglifier', '>= 1.0.3'
   gem 'compass'
 end
 
-gem 'sass-rails', " ~> 3.1.0"
-gem 'jquery-rails'
-gem 'haml'
-gem 'omniauth', :git => "git://github.com/intridea/omniauth.git", :branch => '0-3-stable'
-gem 'thumbs_up', :git => "git://github.com/leemartin/thumbs_up.git"
-gem 'redcarpet'
+gem 'jquery-rails', '>= 2.2.0'
+gem 'haml-rails'
+gem 'omniauth-soundcloud', '>= 1.0.1'
+gem 'thumbs_up', git: 'git://github.com/leemartin/thumbs_up.git'
+gem 'redcarpet', '~> 2.2.2'
 gem 'rails_config'
-gem 'kaminari'
-gem 'soundcloud', "~> 0.2.9"
+gem 'kaminari', '~> 0.14.1'
+gem 'soundcloud', '~> 0.3.1'
 
 group :test do
-  gem 'turn', :require => false
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+  gem 'capybara'
 end
 
 group :development do
