@@ -1,0 +1,4 @@
+# Store your keys in local settings files
+## /config/settings/production.local.yml
+## key: "SOME_KEY"
+## secret: "ITS_SECRET"
