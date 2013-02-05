@@ -4,14 +4,14 @@ class User < ActiveRecord::Base
 
   def self.identify_or_create_from_omniauth(auth)
     user_info = {
-      :uid => auth["uid"],
-      :name => auth["user_info"]["name"],
-      :username => auth["extra"]["user_hash"]["username"],
-      :permalink => auth["extra"]["user_hash"]["permalink"],
-      :avatar_url => auth["user_info"]["image"],
-      :city => auth["extra"]["user_hash"]["city"],
-      :country => auth["extra"]["user_hash"]["country"],
-      :token => auth["credentials"]["token"]
+      uid: auth["uid"],
+      name: auth["info"]["name"],
+      username: auth["info"]["nickname"],
+      permalink: auth["extra"]["raw_info"]["permalink_url"],
+      avatar_url: auth["info"]["image"],
+      city: auth["extra"]["raw_info"]["city"],
+      country: auth["extra"]["raw_info"]["country"],
+      token: auth["credentials"]["token"]
     }
 
     if user = User.find_by_uid(user_info[:uid])
@@ -52,10 +52,6 @@ class User < ActiveRecord::Base
   def soundcloud_groups
     groups = soundcloud.get('/me/groups.json?limit=200')
     groups.delete_if { |g| g.creator.nil? || g.creator.id != uid }
-  end
-
-  def link
-    "http://soundcloud.com/#{permalink}"
   end
 
   def is_admin?(competition)

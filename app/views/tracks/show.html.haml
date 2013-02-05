@@ -9,7 +9,7 @@
         %h1= @track.title
         %h2
           Submitted by
-          = link_to @track.user.username, @track.user.link, :target => "_blank"
+          = link_to @track.user.username, @track.user.permalink, :target => "_blank"
           %em #{time_ago_in_words @track.created_at} ago
 
   .voting.five.columns.half-bottom
@@ -50,11 +50,11 @@
 
     .comment.owner.clearfix
       %div
-        = link_to image_tag(@track.user.avatar_url, :class => "scale-with-grid"), @track.user.link
+        = link_to image_tag(@track.user.avatar_url, :class => "scale-with-grid"), @track.user.permalink
       %div
         %h4
           Submitted by
-          = link_to @track.user.username, @track.user.link, :target => "_blank"
+          = link_to @track.user.username, @track.user.permalink, :target => "_blank"
           %em #{time_ago_in_words @track.created_at} ago
         %p Loading description...
 
